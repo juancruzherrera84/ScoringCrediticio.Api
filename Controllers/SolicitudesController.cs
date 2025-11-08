@@ -35,7 +35,7 @@ namespace Scoring.Api.Controllers
         public ActionResult<IEnumerable<SolicitudResponse>> Buscar(
             [FromQuery] EstadoSolicitud? estado,
             [FromQuery] NivelRiesgo? riesgo,
-            [FromQuery] string documento)
+            [FromQuery] long documento)
         {
             var solicitudes = _solicitudService.Buscar(estado, riesgo, documento);
             var lista = solicitudes.Select(MapToResponse).ToList();

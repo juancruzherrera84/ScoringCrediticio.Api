@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Scoring.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0d1926c73e8575ac44fbbb39b5184096274ee7b9")]
 [assembly: System.Reflection.AssemblyProductAttribute("Scoring.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Scoring.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

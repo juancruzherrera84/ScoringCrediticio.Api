@@ -24,9 +24,13 @@
 
 //app.Run();
 
+using Microsoft.EntityFrameworkCore;
 using Scoring.Application.Interfaces;
 using Scoring.Application.Services;
 using Scoring.Infrastructure;
+using Scoring.Infrastructure.Data;
+using Scoring.Infrastructure.Interfaces;
+using Scoring.Infrastructure.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -38,9 +42,22 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // 🔗 Inyección de dependencias
-builder.Services.AddSingleton<ISolicitudRepository, SolicitudRepositoryInMemory>();
+//builder.Services.AddSingleton<ISolicitudRepository, SolicitudRepositoryInMemory>();
+//builder.Services.AddSingleton<IClienteRepository, ClienteRepositoryInMemory>();
+
+builder.Services.AddDbContext<ScoringDbContext>(options =>
+    options.UseSqlite(
+        builder.Configuration.GetConnectionString("DefaultConnection")
+        ?? "Data Source=App_Data/scoring.db"
+    )
+);
+
+builder.Services.AddScoped<ISolicitudRepository, SolicitudRepository>();
+builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
+
 builder.Services.AddScoped<IScoringService, ScoringService>();
 builder.Services.AddScoped<ISolicitudService, SolicitudService>();
+builder.Services.AddScoped<IClienteService, ClienteService>();
 
 var app = builder.Build();
 
